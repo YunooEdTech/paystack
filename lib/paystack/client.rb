@@ -37,11 +37,11 @@ module Paystack
         parsed_response = JSON.parse(yield)
         handle_errors(parsed_response)
 
-        case parsed_response
+        case parsed_response["data"]
         when Array
-          handle_array_response(parsed_response, resource)
+          handle_array_response(parsed_response["data"], resource)
         when Hash
-          handle_hash_response(parsed_response, resource)
+          handle_hash_response(parsed_response["data"], resource)
         else
           parsed_response
         end
@@ -51,9 +51,9 @@ module Paystack
     private
 
     def handle_errors(response)
-      return unless response.error?
+      return if response["status"] == true
 
-      raise(ApiResponseError, "#{response["code"]} - #{response["message"]}")
+      raise(ApiResponseError, "#{response["message"]}")
     end
 
     def handle_array_response(response, resource)
