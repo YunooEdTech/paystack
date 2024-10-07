@@ -26,11 +26,9 @@ module Paystack
     end
 
     def init!
-      self.authorization_base_64 = Base64.strict_encode64("#{public_key}:#{private_key}")
       self
     end
 
-    # "1ef7a484f8e4e76ed9c0c7bc6af1b08ef5cb045f"
     def request(resource = nil)
       max_retries = 2
       retries = 0
