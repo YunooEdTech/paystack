@@ -1,6 +1,6 @@
 module Paystack
   module ApiResource
-    class TrainingPath < Resource
+    class Charge < Resource
     end
   end
 end

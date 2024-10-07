@@ -1,6 +1,6 @@
 module Paystack
   module ApiResource
-    class Training < Resource
+    class TransferRecipient < Resource
     end
   end
 end
