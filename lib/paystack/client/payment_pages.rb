@@ -32,15 +32,13 @@ module Paystack
       end
 
       def add_products_to_page(id, options = {})
-        request(ApiResource::PaymentPage) do
-          self.class.post("#{@base_uri}/#{BASE}/#{id}/products", {
-                            body: options.to_json,
-                            headers: {
-                              "Authorization" => "Bearer #{private_key}",
-                              "Content-Type" => "application/json"
-                            }
-                          }).body
-        end
+        self.class.post("#{@base_uri}/#{BASE}/#{id}/products", {
+                          body: options.to_json,
+                          headers: {
+                            "Authorization" => "Bearer #{private_key}",
+                            "Content-Type" => "application/json"
+                          }
+                        }).body
       end
 
       def create_page(options = {})
