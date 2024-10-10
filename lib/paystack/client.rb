@@ -1,7 +1,9 @@
 require "httparty"
 require "paystack/api_resource/resource"
 require "paystack/api_resource/payment_page"
+require "paystack/api_resource/product"
 require "paystack/client/payment_pages"
+require "paystack/client/products"
 
 module Paystack
   class ExpiredTokenError < StandardError; end
@@ -10,6 +12,7 @@ module Paystack
   class Client
     include HTTParty
     include Paystack::Client::PaymentPages
+    include Paystack::Client::Products
 
     attr_accessor :public_key, :private_key
 
