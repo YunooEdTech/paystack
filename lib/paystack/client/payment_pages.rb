@@ -21,8 +21,6 @@ module Paystack
       def retrieve_page(id)
         request(ApiResource::PaymentPage) do
           self.class.get("#{@base_uri}/#{BASE}/#{id}", {
-
-                           query: options,
                            headers: {
                              "Authorization" => "Bearer #{private_key}",
                              "Content-Type" => "application/json"
