@@ -41,7 +41,7 @@ module Paystack
         end
       end
 
-      def update_product(id)
+      def update_product(id, options = {})
         request(ApiResource::Product) do
           self.class.put("#{@base_uri}/#{BASE}/#{id}", {
                            body: options.to_json,
