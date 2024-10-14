@@ -75,6 +75,18 @@ module Paystack
         end
       end
 
+      def finalize_payment_request(id, options = {})
+        request(ApiResource::PaymentRequest) do
+          self.class.post("#{@base_uri}/#{BASE}/finalize/#{id}", {
+                            body: options.to_json,
+                            headers: {
+                              "Content-Type" => "application/json",
+                              "Authorization" => "Bearer #{private_key}"
+                            }
+                          }).body
+        end
+      end
+
       def archive_payment_request(id)
         request(ApiResource::PaymentRequest) do
           self.class.post("#{@base_uri}/#{BASE}/archive/#{id}", {
