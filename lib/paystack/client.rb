@@ -3,11 +3,15 @@ require "paystack/api_resource/resource"
 require "paystack/api_resource/payment_page"
 require "paystack/api_resource/product"
 require "paystack/api_resource/plan"
+require "paystack/api_resource/customer"
+require "paystack/api_resource/payment_request"
 require "paystack/api_resource/transaction"
 require "paystack/client/payment_pages"
 require "paystack/client/products"
 require "paystack/client/transactions"
 require "paystack/client/plans"
+require "paystack/client/customers"
+require "paystack/client/payment_requests"
 
 module Paystack
   class ExpiredTokenError < StandardError; end
@@ -19,6 +23,8 @@ module Paystack
     include Paystack::Client::Products
     include Paystack::Client::Transactions
     include Paystack::Client::Plans
+    include Paystack::Client::Customers
+    include Paystack::Client::PaymentRequests
 
     attr_accessor :public_key, :private_key
 
